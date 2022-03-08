@@ -6,10 +6,10 @@ declare(strict_types=1);
 
 namespace VietnamPMTeam\BedWars\commands;
 
-use pocketmine\command\PluginCommand;
+use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
-use pocketmine\command\ConsoleCommandSender;
+use pocketmine\console\ConsoleCommandSender;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
@@ -19,7 +19,7 @@ use VietnamPMTeam\BedWars\BedWars;
 /**
  *
  */
-class BedWarsCommand extends PluginCommand {
+class BedWarsCommand extends Command {
     /**
      * @var BedWars
      */

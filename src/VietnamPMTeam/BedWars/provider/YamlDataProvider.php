@@ -3,7 +3,7 @@
 
 namespace VietnamPMTeam\BedWars\provider;
 
-use pocketmine\level\Level;
+use pocketmine\world\World;
 use pocketmine\utils\Config;
 use VietnamPMTeam\BedWars\Game;
 use VietnamPMTeam\BedWars\BedWars;
@@ -48,7 +48,7 @@ class YamlDataProvider {
 
     public function saveArenas() {
         foreach ($this->plugin->arenas as $fileName => $arena) {
-            if($arena->level instanceof Level) {
+            if($arena->level instanceof World) {
                 foreach ($arena->players as $player) {
                     $player->teleport($player->getServer()->getDefaultLevel()->getSpawnLocation());
                 }
