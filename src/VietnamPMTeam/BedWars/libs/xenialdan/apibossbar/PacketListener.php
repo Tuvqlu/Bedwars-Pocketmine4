@@ -1,6 +1,6 @@
 <?php
 
-namespace VietnamPMTeam\BedWars\libs\xenialdan\apibossbar;
+namespace xenialdan\apibossbar;
 
 use InvalidArgumentException;
 use pocketmine\event\Listener;

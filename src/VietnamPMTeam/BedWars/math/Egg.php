@@ -6,9 +6,10 @@ namespace VietnamPMTeam\BedWars\math;
 
 use pocketmine\block\Air;
 use pocketmine\block\Block;
+use pocketmine\block\BlockFactory;
 use pocketmine\block\BlockIds;
 use pocketmine\entity\projectile\Egg as Sarkas;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
 use pocketmine\math\RayTraceResult;
 use pocketmine\level\particle\HeartParticle;
@@ -54,7 +55,7 @@ class Egg extends Sarkas
 
         foreach($this->everbody as $body){
                              
-          if(!$this->getLevel()->getBlockAt($body->x,$body->y,$body->z) instanceof Air){
+          if(!$this->getWorld()->getBlockAt($body->x,$body->y,$body->z) instanceof Air){
               return;
           }
             foreach($this->arena->data["location"] as $spawn){
@@ -66,14 +67,14 @@ class Egg extends Sarkas
                     if(BedWars::getInstance()->isInGame($this->owner)){
            
                         
-                        BedWars::getInstance()->getArenaByPlayer($this->owner)->addPlacedBlock($this->getLevel()->getBlockAt($body->x,$body->y,$body->z));
+                        BedWars::getInstance()->getArenaByPlayer($this->owner)->addPlacedBlock($this->getWorld()->getBlockAt($body->x,$body->y,$body->z));
                         
-                        $this->getLevel()->setBlock($body,Block::get(BlockIds::WOOL,$meta[$this->team]),false,true);
+                        $this->getWorld()->setBlock($body,BlockFactory::getInstance()->get(BlockIds::WOOL,$meta[$this->team]),false,true);
                       
                     }
                   
                            
-                    foreach($this->getLevel()->getPlayers() as $p){
+                    foreach($this->getWorld()->getPlayers() as $p){
                         if($p->distance($body) < 3){
                          $this->addSound($p);
                         }
@@ -87,13 +88,13 @@ class Egg extends Sarkas
 
     public function addSound($player){
         $pk = new PlaySoundPacket();
-        $pk->x = $player->getX();
-        $pk->y = $player->getY();
-        $pk->z = $player->getZ();
+        $pk->x = $player->getPosition()->getX();
+        $pk->y = $player->getPosition()->getY();
+        $pk->z = $player->getPosition()->getZ();
         $pk->volume = 100;
         $pk->pitch = 1;
         $pk->soundName = 'random.pop';
-        $player->dataPacket($pk);
+        $player->getNetworkSession()->dataPacket($pk);
         //Server::getInstance()->broadcastPacket($player->getLevel()->getPlayers(), $pk);
     }
 

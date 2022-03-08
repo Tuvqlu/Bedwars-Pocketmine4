@@ -1,6 +1,6 @@
 <?php
 
-namespace VietnamPMTeam\BedWars\libs\xenialdan\apibossbar;
+namespace xenialdan\apibossbar;
 
 use pocketmine\entity\Attribute;
 use pocketmine\entity\AttributeMap;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace VietnamPMTeam\BedWars\task;
 
 use pocketmine\world\World;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\world\Position;
 use pocketmine\entity\Effect;
 use pocketmine\entity\effect\EffectInstance;
@@ -69,13 +69,13 @@ class TaskTick extends Task {
     public function addsound($player, string $sound, float $pitch = 1): bool
 	{
         $pk = new PlaySoundPacket();
-        $pk->x = $player->getX();
-        $pk->y = $player->getY();
-        $pk->z = $player->getZ();
+        $pk->x = $player->getPosition()->getX();
+        $pk->y = $player->getPosition()->getY();
+        $pk->z = $player->getPosition()->getZ();
         $pk->volume = 100;
         $pk->pitch = $pitch;
         $pk->soundName = $sound;
-        $player->dataPacket($pk);
+        $player->getNetworkSession()->sendDataPacket($pk);
         return true;
     }
 

@@ -3890,7 +3890,7 @@ class Game implements Listener
             }
             return $axe[$tier];
         }
-        return Item::get(0);
+        return ItemFactory::getInstance()->get(0,0,0);
     } 
 
     
@@ -3937,7 +3937,7 @@ class Game implements Listener
                 }
             }
 
-            $payment = Item::get($id, 0, $value);
+            $payment = ItemFactory::getInstance()->get($id, 0, $value);
             if ($player->getInventory()->contains($payment)) { 
                 $this->pickaxe[$player->getId()] = $this->getNextTier($player, false); 
                 $player->getInventory()->removeItem($payment);

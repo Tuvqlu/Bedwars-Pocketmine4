@@ -3,7 +3,7 @@
 namespace VietnamPMTeam\BedWars\provider;
 
 
-use pocketmine\Player;
+use pocketmine\player\Player;
 use VietnamPMTeam\BedWars\BedWars;
 use mysqli;
 

@@ -8,7 +8,7 @@ use pocketmine\entity\Human;
 use pocketmine\entity\Villager;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use VietnamPMTeam\BedWars\Game;
 
 class UpgradeVillager extends Villager
@@ -48,13 +48,13 @@ class UpgradeVillager extends Villager
 	     if ($this->arena->inGame($dmg)) {
 		 $this->arena->upgradeMenu($dmg);
 		 $player->setHealth(20);
-		 $event->setCancelled(true);
+		 $event->cancel();
 		}
 		}
         }
         }
             } else {
-                $event->setCancelled(true);
+                $event->cancel();
             } 
         }
     
