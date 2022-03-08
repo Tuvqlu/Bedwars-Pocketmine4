@@ -1,6 +1,6 @@
 <?php
 
-namespace xenialdan\apibossbar;
+namespace VietnamPMTeam\BedWars\libs\xenialdan\apibossbar;
 
 use GlobalLogger;
 use InvalidArgumentException;
