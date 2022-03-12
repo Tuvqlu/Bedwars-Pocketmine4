@@ -12,7 +12,7 @@ use pocketmine\entity\projectile\Egg as Sarkas;
 use pocketmine\player\Player;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
 use pocketmine\math\RayTraceResult;
-use pocketmine\level\particle\HeartParticle;
+use pocketmine\world\particle\HeartParticle;
 use VietnamPMTeam\BedWars\BedWars;
 
 
